@@ -65,6 +65,11 @@ void imprimePilha(tp_pilha p){
   
 }
 
+int alturaPilha(tp_pilha *p){
+  return p->topo+1;
+}
+
+
 void retiraImparesM(tp_pilha *p){
 	tp_pilha paux;
 	inicializaPilha(&paux);
@@ -72,13 +77,13 @@ void retiraImparesM(tp_pilha *p){
 	while(!pilhaVazia(p)){
 		pop(p, &e); //nao passamos endereço de memoria, pois nao queremos afetar a verdadeira
 		if(e % 2 == 0){ //quer dizer que é par, colocamos na auxiliar para depois recolocar
-			push(paux, &e); //ta com todos os pares
+			push(&paux, e); //ta com todos os pares
 		}
 	}
 	
-	while(!pilhaVazia(paux)){
-		pop(&paux, &e) //começa a tirar os pares, e vamos colocá-los devolta na p principal.
-		push(p, e)
+	while(!pilhaVazia(&paux)){
+		pop(&paux, &e); //começa a tirar os pares, e vamos colocá-los devolta na p principal.
+		push(p, e); //adicionei pontovirgula
 	}
 }
 
@@ -102,7 +107,7 @@ void retirarImpares(tp_pilha *p){
 }
 
 int comparaPilhas(tp_pilha p1, tp_pilha p2){
-  if(tamanhoPilha(&p1) != tamanhoPilha(&p2)) return 0;
+  if(alturaPilha(&p1) != alturaPilha(&p2)) return 0;
 
   tp_item e1, e2;
 
@@ -134,10 +139,6 @@ int empilhaPilha(tp_pilha *p1, tp_pilha *p2){
         push(p1, e);
         
     }
-}
-
-int alturaPilha(tp_pilha *p){
-  return p->topo+1;
 }
 
 #endif //fim do ifndef 
