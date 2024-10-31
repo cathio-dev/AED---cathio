@@ -22,4 +22,37 @@ int arvore_vazia(tp_arvore raiz){
     else return 0;
 }
 
+tp_no *aloca_no(){
+    tp_no *no;
+    no=(tp_no*)malloc(sizeof(tp_no));
+    return no;
+}
+
+int insere_no(tp_arvore *raiz, tp_item e){
+    tp_no *pai = NULL, *novo, *p=*raiz;
+    novo=aloca_no();
+    if(!novo) return 0;
+
+    novo->info=e;
+    novo->esq=NULL;
+    novo->dir=NULL;
+    while(p!=NULL){
+        pai=p;
+        if( e < p-> info)
+            p=p->esq;
+        else
+            p=p->dir;
+    }
+
+    if(pai != NULL){
+        if(e < pai->info)
+            pai->esq=novo;
+        else
+            pai -> dir = novo;
+    }else{
+        *raiz = novo;
+        return 1;
+    }
+}
+
 #endif
