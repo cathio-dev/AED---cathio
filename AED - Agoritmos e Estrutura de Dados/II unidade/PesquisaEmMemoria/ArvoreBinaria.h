@@ -64,14 +64,6 @@ void pre_ordem(tp_no *p){
 
     }
 }
-void pre_ordem(tp_no *p){
-    if(p!=NULL){
-        printf("\n%d\n", p->info); //visita antes o no, depois esq, dps direita. começa imprimindo o pai.
-        pre_ordem(p->esq);
-        pre_ordem(p->dir);
-
-    }
-}
 
 void em_ordem(tp_no *p){
     if(p!=NULL){
@@ -185,7 +177,7 @@ void destroi_fila(tp_fila **fila) {
 }
 
 
-void BFS(tp_arvore *raiz) {
+/*void BFS(tp_arvore *raiz) {
     if(!arvore_vazia(*raiz)) {
         tp_fila *fila = inicia_fila();
         insereFila(&fila, *raiz);
@@ -199,73 +191,6 @@ void BFS(tp_arvore *raiz) {
 	    }
 	destroi_fila(&fila);
     }
-}
-
-/***** Fila *****/
-
-typedef struct tp_fila {
-	tp_no *no;
-	struct tp_fila *prox;	
-} tp_fila;
-
-tp_fila * inicia_fila() {
-	return NULL;
-}
-
-int fila_vazia(tp_fila **fila) {
-	if(*fila == NULL) return 1;
-	return 0;
-}
-
-tp_fila * aloca_fila(tp_no *no) {
-	tp_fila *no_fila = (tp_fila*) malloc(sizeof(tp_fila));
-	no_fila->no = no;
-	no_fila->prox = NULL;
-	return no_fila;
-}
-
-int insere_fila(tp_fila **fila, tp_no *no) {
-	tp_fila *no_fila = aloca_fila(no), *atu = *fila;
-	if(no_fila == NULL) return 0;
-	
-	if(fila_vazia(fila)) *fila = no_fila;
-	else {
-		while(atu->prox != NULL) {
-			atu = atu->prox;
-		}
-		atu->prox = no_fila;
-	}
-	return 1;
-}
-
-tp_no * remove_fila(tp_fila **fila) {
-	tp_fila *atu = *fila;
-	*fila = atu->prox;
-	tp_no *no = atu->no;
-	free(atu);
-	atu = NULL;
-	return no;
-}
-
-void imprime_fila(tp_fila **fila) {
-	tp_fila *atu = *fila;
-	while(atu != NULL) {
-		printf("%d ", atu->no->info);
-		atu = atu->prox;
-	}
-	printf("\n");
-}
-
-void destroi_fila(tp_fila **fila) {
-	tp_fila *atu = *fila;
-	while(atu != NULL) {
-		*fila = atu->prox;
-		free(atu);
-		atu = *fila;
-	}
-	*fila = NULL;
-}
-
-
+}*/
 
 #endif

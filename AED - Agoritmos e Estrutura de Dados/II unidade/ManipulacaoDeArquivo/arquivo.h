@@ -22,4 +22,38 @@ int gravar(FILE *arq, char nomearq[]) //recebe ponteiro de tipo FILE, e o nome.
     return 1;
 }
 
+int ler(FILE *arq, char nomearq[]){
+    char registro[50];
+    arq=fopen(nomearq, "r");
+    if(!arq) return 0;
+    while(fgets(registro, sizeof(registro), arq)){
+        printf("%s", registro);
+    }
+    fclose(arq);
+    return 1;
+}
+
+int ler_formatado(FILE *arq, char nomearq[]){
+    float nota1, nota2, nota3;
+    arq=fopen(nomearq, "r");
+    if(!arq) return 0;
+
+    while(fscanf(arq, "%f %f %f", &nota1, &nota2, &nota3) != EOF){
+        printf("Nota 1: %f, Nota 2: %f, Nota 3: %f", nota1, nota2, nota3);
+    }
+    fclose(arq);
+    return 1;
+}
+
+int ler_alterar_geral(FILE *arq, char nomearq[]){
+    float notas[3][3];
+    char registro[20];
+    int i = 0;
+    arq=fopen(nomearq, "r");
+    if(!arq) return 0;
+
+    
+    fclose(arq);
+    return 1;
+}
 #endif
