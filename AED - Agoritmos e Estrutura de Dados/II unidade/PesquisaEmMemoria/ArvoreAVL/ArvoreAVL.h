@@ -1,3 +1,5 @@
+#ifndef ArvoreAVL.h
+#define ArvoreAVL.h
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,7 +10,7 @@ typedef struct NO* ArvAVL;
 struct NO{
    struct NO *esq;
    int info;
-   int alt; //altura da sub-árvore (facilita o cálculo do fator de balanceamento!)
+   int alt; //altura da sub-ï¿½rvore (facilita o cï¿½lculo do fator de balanceamento!)
    struct NO *dir;
 };
 
@@ -17,8 +19,8 @@ void preOrd(ArvAVL* raiz);
 void emOrd(ArvAVL* raiz);
 void posOrd(ArvAVL* raiz);
 int inserir(ArvAVL* raiz, int valor);
-int remover(ArvAVL* raiz, int valor); // Responsável pela busca do nó a ser removido
-struct NO* buscarMenor(struct NO* atual); // Busca o nó mais a esquerda de uma árvore
+int remover(ArvAVL* raiz, int valor); // Responsï¿½vel pela busca do nï¿½ a ser removido
+struct NO* buscarMenor(struct NO* atual); // Busca o nï¿½ mais a esquerda de uma ï¿½rvore
 int consultarValorAVL(ArvAVL* raiz, int valor);
 int maior(int x, int y);
 int alt_NO(struct NO* no);
@@ -231,8 +233,8 @@ void RotacaoRL(ArvAVL* raiz){
 
 int remover(ArvAVL* raiz, int valor){	
 	int res;
-	if(*raiz==NULL){ // Valor não encontrado!
-		printf("Valor %d nao encontrado na árvore!", valor);
+	if(*raiz==NULL){ // Valor nï¿½o encontrado!
+		printf("Valor %d nao encontrado na ï¿½rvore!", valor);
 		return 0;	
 	} 
 	if(valor < (*raiz)->info){
@@ -262,7 +264,7 @@ int remover(ArvAVL* raiz, int valor){
 			else *raiz = (*raiz)->dir;
 			free(noVelho);
 			return 1;
-		}else{ // o nó tem 2 filhos: precisamos substituir pelo nó mais a esquerda da subárvore da direita
+		}else{ // o nï¿½ tem 2 filhos: precisamos substituir pelo nï¿½ mais a esquerda da subï¿½rvore da direita
 			struct NO* temp = buscarMenor((*raiz)->dir);
 			(*raiz)->info = temp->info;
 			remover(&(*raiz)->dir, (*raiz)->info);
@@ -289,3 +291,4 @@ struct NO* buscarMenor(struct NO* atual){
 	return no1;
 }
 
+#endif
