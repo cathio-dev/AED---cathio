@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <locale.h>
-#include "ArvoreAVL.h"
+#include "AVL.H"
 
 int main(){
     ArvAVL *arvore = criarAVL();

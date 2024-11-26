@@ -1,9 +1,9 @@
-#ifndef ArvoreAVL.h
-#define ArvoreAVL.h
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
+#ifndef AVL.H
+#define AVL.H
 
 typedef struct NO* ArvAVL;
 
